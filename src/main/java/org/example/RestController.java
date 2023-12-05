@@ -1,6 +1,5 @@
 package org.example;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +21,14 @@ class RestController {
      * The endpoint receives a JSON input containing the apiKey and the apiUrl. They are then defined as the  translateService
      * parameters.
      * The endpoint returns a full string of the API URL in addition to the key passed as a path parameter.
+     * The Request body follow this format:
+     * {
+     * "apiUrl": "https://translation.googleapis.com/language/translate/v2",
+     * "apiKey": "<SOME_KEY>"
+     * }
+     * The reply follows this format:
+     *The API URL has been configured as: https://translation.googleapis.com/language/translate/v2?key=<SOME_KEY>
      */
-
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String setApi(@RequestBody String requestPayload) {
         try {
