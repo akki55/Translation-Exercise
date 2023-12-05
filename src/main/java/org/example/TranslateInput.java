@@ -1,6 +1,9 @@
 package org.example;
 import lombok.Getter;
+import org.json.JSONArray;
 import org.json.JSONObject;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 
 import java.io.Serializable;
@@ -24,10 +27,21 @@ public class TranslateInput implements Serializable {
      * https://cloud.google.com/translate/docs/basic/translating-text
      * This function is useful in TranslateService.translate() function.
      */
+
+    public String getDestLanguage() {
+        return destLanguage;
+    }
+
+    public List<String> getLines() {
+        return lines;
+    }
+
     public String getJsonBody() {
         JSONObject jsonObject = new JSONObject();
-        // add code here
+        jsonObject.put("q", new JSONArray(lines)); // Convert lines to JSON array
+        jsonObject.put("target", destLanguage); // Adding destination language to the request body
         return jsonObject.toString();
     }
+
 
 }
