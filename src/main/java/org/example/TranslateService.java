@@ -28,6 +28,7 @@ public class TranslateService {
     public TranslateService() {
         // We can initialize apiUrl, apiKey, and endpoint if needed, maybe if provided in some configuration file
     }
+
     public TranslateService(String apiUrl, String apiKey) throws MalformedURLException {
         this.apiUrl = apiUrl;
         this.apiKey = apiKey;
@@ -39,7 +40,8 @@ public class TranslateService {
         return apiUrl + "?key=" + apiKey;
     }
 
-    /** This  function takes the translateInput and modify it to make it compatible with Google Translate API
+    /**
+     * This  function takes the translateInput and modify it to make it compatible with Google Translate API
      * Please Check this https://cloud.google.com/translate/docs/basic/translating-text.
      * This function returns a list of stings such that each string is formated as the following:
      * "(detectedSourceLanguage) Line -> (destLanguage) Translated Line"
@@ -83,7 +85,8 @@ public class TranslateService {
         return reply;
     }
 
-    /** This function takes the Google Translate request body, establish a connection and gets the response as a JSONobject
+    /**
+     * This function takes the Google Translate request body, establish a connection and gets the response as a JSONobject
      * This response is returned and processed in the translate function.
      */
     public static JSONObject sendGoogleTranslateRequest(String requestBody) {

@@ -17,7 +17,8 @@ class RestController {
     @Autowired
     private TranslateService translateService;
 
-    /** An endpoint that can be used to set the TranslateService with the API URL and API Key.
+    /**
+     * An endpoint that can be used to set the TranslateService with the API URL and API Key.
      * The endpoint receives a JSON input containing the apiKey and the apiUrl. They are then defined as the  translateService
      * parameters.
      * The endpoint returns a full string of the API URL in addition to the key passed as a path parameter.
@@ -44,20 +45,21 @@ class RestController {
         }
     }
 
-    /** An endpoint used to translate an array of lines to a destination language defined in the request body.
+    /**
+     * An endpoint used to translate an array of lines to a destination language defined in the request body.
      * The request body should follow the TranslateInput class. It should have the following format (Example):
      * { "destLanguage" : "es",
-     *   "lines" : ["My name is ali",
-     *              "This is cool!",
-     *              "Hrvatska ima fantastičnu nogometnu momčad"
-     *              ]
+     * "lines" : ["My name is ali",
+     * "This is cool!",
+     * "Hrvatska ima fantastičnu nogometnu momčad"
+     * ]
      * }
      * The return value is returned by the function TranslateService.translate() and it should be a List<String> of
      * the following format (Example):
      * [
-     *     "(en) My name is ali -> (es) Mi nombre es Ali",
-     *     "(en) This is cool! -> (es) ¡Esto es genial!",
-     *     "(hr) Hrvatska ima fantastičnu nogometnu momčad -> (es) Croacia tiene un fantástico equipo de fútbol."
+     * "(en) My name is ali -> (es) Mi nombre es Ali",
+     * "(en) This is cool! -> (es) ¡Esto es genial!",
+     * "(hr) Hrvatska ima fantastičnu nogometnu momčad -> (es) Croacia tiene un fantástico equipo de fútbol."
      * ]
      */
     @RequestMapping(value = "/translate", method = RequestMethod.POST)
